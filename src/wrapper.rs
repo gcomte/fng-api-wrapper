@@ -1,4 +1,6 @@
-use serde::{Deserialize, Serialize};
+use chrono::prelude::*;
+use serde::Deserialize;
+use serde_aux::prelude::*;
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
 pub enum ValueClassification {
@@ -20,10 +22,13 @@ pub struct FearAndGreedIndex {
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct Data {
-    pub value: String,
+    #[serde(deserialize_with = "deserialize_number_from_string")]
+    pub value: u8,
     pub value_classification: ValueClassification,
-    pub timestamp: String,
-    pub time_until_update: Option<String>,
+    #[serde(deserialize_with = "deserialize_datetime_utc_from_seconds")]
+    pub timestamp: DateTime<Utc>,
+    #[serde(default, deserialize_with = "deserialize_option_number_from_string")]
+    pub time_until_update: Option<u16>,
 }
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
