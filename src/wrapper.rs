@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, PartialEq, Eq)]
 pub enum ValueClassification {
     #[serde(rename(deserialize = "Extreme Fear"))]
     ExtremeFear,
@@ -11,14 +11,14 @@ pub enum ValueClassification {
     ExtremeGreed,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct FearAndGreedIndex {
     pub name: String,
     pub data: Vec<Data>,
     pub metadata: Metadata,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct Data {
     pub value: String,
     pub value_classification: ValueClassification,
@@ -26,7 +26,7 @@ pub struct Data {
     pub time_until_update: Option<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct Metadata {
     pub error: Option<String>,
 }
