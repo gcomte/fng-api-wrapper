@@ -1,3 +1,3 @@
 pub mod client;
-mod errors;
-mod wrapper;
+pub mod errors;
+pub mod wrapper;
