@@ -1,7 +1,10 @@
 [package]
 name = "fng_api_wrapper"
+description = "Crypto Fear and Greed API wrapper"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+repository = "https://github.com/gcomte/fng-api-wrapper"
 
 [dependencies]
 chrono = { version = "0.4.23", default-features = false }
