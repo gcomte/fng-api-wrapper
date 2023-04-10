@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
   schedule:
-    - cron: '21 4 * * *' # every day at 4:21 AM UTC
+    - cron: '21 2 * * *' # every day at 2:21 AM UTC
 
 env:
   CARGO_TERM_COLOR: always
