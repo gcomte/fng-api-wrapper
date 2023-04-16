@@ -28,7 +28,7 @@ pub struct Data {
     #[serde(deserialize_with = "deserialize_datetime_utc_from_seconds")]
     pub timestamp: DateTime<Utc>,
     #[serde(default, deserialize_with = "deserialize_option_number_from_string")]
-    pub time_until_update: Option<u16>,
+    pub time_until_update: Option<u32>,
 }
 
 #[derive(Deserialize, Debug, PartialEq, Eq)]
