@@ -1,4 +1,8 @@
 # Change Log
+## [1.0.1] - 2023-04-16
+- Fix json parsing error:
+  Use appropriate `u32`-integer for field `time_until_update`, instead of `u16` which was sometimes too small.
+- Various CI improvements
 ## [1.0.0] - 2023-04-10
 - Make modules publicly accessible
 - Derive Eq and PartialEq for wrapper, but stop deriving Serialize
