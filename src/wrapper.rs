@@ -2,8 +2,9 @@ use chrono::prelude::*;
 use serde::Deserialize;
 use serde_aux::prelude::*;
 
-#[derive(Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, Clone, Default, PartialEq, Eq)]
 pub enum ValueClassification {
+    #[default]
     #[serde(rename(deserialize = "Extreme Fear"))]
     ExtremeFear,
     Fear,
@@ -13,14 +14,14 @@ pub enum ValueClassification {
     ExtremeGreed,
 }
 
-#[derive(Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, Clone, Default, PartialEq, Eq)]
 pub struct FearAndGreedIndex {
     pub name: String,
     pub data: Vec<Data>,
     pub metadata: Metadata,
 }
 
-#[derive(Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, Clone, Default, PartialEq, Eq)]
 pub struct Data {
     #[serde(deserialize_with = "deserialize_number_from_string")]
     pub value: u8,
@@ -31,7 +32,18 @@ pub struct Data {
     pub time_until_update: Option<u32>,
 }
 
-#[derive(Deserialize, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Debug, Clone, Default, PartialEq, Eq)]
 pub struct Metadata {
     pub error: Option<String>,
+}
+
+fn is_normal<T: Sized + Send + Sync + Unpin>() {}
+
+#[test]
+// if one of the variables of a type is not Send or Sync, that autotrait will not be derived for that type
+fn ensure_autotraits_are_implemented_for_types() {
+    is_normal::<Metadata>();
+    is_normal::<Data>();
+    is_normal::<ValueClassification>();
+    is_normal::<FearAndGreedIndex>();
 }
