@@ -37,6 +37,7 @@ pub struct Metadata {
     pub error: Option<String>,
 }
 
+#[allow(dead_code)]
 fn is_normal<T: Sized + Send + Sync + Unpin>() {}
 
 #[test]
