@@ -8,7 +8,8 @@ fn fetch_10_last_days() {
         ureq::get("https://api.alternative.me/fng/?limit=10")
             .call()
             .unwrap()
-            .into_string()
+            .body_mut()
+            .read_to_string()
             .unwrap()
     );
 
