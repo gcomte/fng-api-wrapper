@@ -22,8 +22,9 @@ fn fetch_fng(amt_days_in_past: usize) -> Result<FearAndGreedIndex, FngApiError> 
     let json = ureq::get(format!("{API_URL}?limit={amt_days_in_past}").as_str())
         .call()
         .map_err(|e| FngApiError::ApiError(Box::new(e)))?
-        .into_string()
-        .map_err(FngApiError::ParseResultError)?;
+        .body_mut()
+        .read_to_string()
+        .map_err(|e| FngApiError::ParseResultError(e))?;
 
     serde_json::from_str(&json).map_err(FngApiError::ParseJsonError)
 }
