@@ -5,8 +5,8 @@ The wrapper is incomplete and does not cover the entire API.
 So far it only covers the endpoint https://api.alternative.me/fng/
 
 ## Sample code
-See [sample implementation](examples/sample_implementation.rs), or run it:
+See [sample implementation](examples/fetch_last_ten_days.rs), or run it:
 
 ```bash
-cargo run --example sample_implementation
+cargo run --example fetch_last_ten_days
 ```
