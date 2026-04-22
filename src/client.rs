@@ -24,7 +24,7 @@ fn fetch_fng(amt_days_in_past: usize) -> Result<FearAndGreedIndex, FngApiError> 
         .map_err(|e| FngApiError::ApiError(Box::new(e)))?
         .body_mut()
         .read_to_string()
-        .map_err(|e| FngApiError::ParseResultError(e))?;
+        .map_err(FngApiError::ParseResultError)?;
 
     serde_json::from_str(&json).map_err(FngApiError::ParseJsonError)
 }
