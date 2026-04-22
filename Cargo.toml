@@ -2,14 +2,15 @@
 name = "fng_api_wrapper"
 description = "Crypto Fear and Greed API wrapper"
 version = "1.0.2"
-edition = "2021"
+edition = "2024"
+rust-version = "1.85"
 license = "MIT"
 repository = "https://github.com/gcomte/fng-api-wrapper"
 
 [dependencies]
-chrono = { version = "0.4.23", default-features = false }
-serde = { version = "1.0.152", features = ["derive"] }
-serde-aux = "4.1.2"
-serde_json = "1.0.91"
-thiserror = "2.0.11"
-ureq = "3.0.2"
+chrono = { version = "0.4.44", default-features = false }
+serde = { version = "1.0.228", features = ["derive"] }
+serde-aux = "4.7.0"
+serde_json = "1.0.149"
+thiserror = "2.0.18"
+ureq = "3.3.0"
